@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import Header from './header/header';
 import dummyStore from './dummy-store';
 import Sidebar from './sidebar/sidebar';
+import NoteList from './noteList/NoteList';
 
 class App extends Component {
   state = {
@@ -18,11 +19,13 @@ class App extends Component {
     return (
       <div className='app'>
         <Header />
-        <Sidebar 
-          state={this.state}
-        />
         <main>
-
+          <Sidebar 
+            state={this.state}
+          />
+          <NoteList 
+            state={this.state}
+          />
         </main>
       </div>
     );

@@ -6,7 +6,7 @@ export default function Sidebar(props) {
   const folders = props.state.folders.map(folder => {
     console.log(folder)
     return (
-      <li key={folder.id}>
+      <li className='folder' key={folder.id}>
         <h2>{folder.name}</h2>
       </li>
     )
@@ -16,6 +16,9 @@ export default function Sidebar(props) {
       <ul>
         {folders}
       </ul>
+      <button id='addfolder'>
+        Add Folder
+      </button> 
     </nav>
   )
 }
