@@ -8,4 +8,4 @@ describe('header component', () => {
     ReactDOM.render(<Header />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
-})
+});
