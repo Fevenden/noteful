@@ -1,0 +1,20 @@
+.note {
+    list-style: none;
+    margin: 5px;
+    border: 2px solid grey;
+    text-align: center;
+    width: 400px;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+.noteList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 2;
+}

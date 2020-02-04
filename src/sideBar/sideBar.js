@@ -12,7 +12,7 @@ export default function Sidebar(props) {
     )
   })
   return (
-    <nav className='Nav'>
+    <nav className='sidebar'>
       <ul>
         {folders}
       </ul>

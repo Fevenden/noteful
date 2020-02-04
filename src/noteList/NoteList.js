@@ -5,14 +5,18 @@ export default function Notelist(props) {
   const notes = props.state.notes.map(note => {
     console.log(note);
     return (
-      <li key={note.id}>
+      <li className='note' key={note.id}>
         <h2>{note.name}</h2>
+        <button id='deleteNote'>delete note</button>
       </li>
     )
   })
   return (
-  <ul>
-    {notes}
-  </ul>
+    <section className='noteList'>  
+      <ul>
+        {notes}
+      </ul>
+      <button id='addNote'>Add Note</button>
+    </section>
   )
 }

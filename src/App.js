@@ -4,6 +4,7 @@ import Header from './header/header';
 import dummyStore from './dummy-store';
 import Sidebar from './sidebar/sidebar';
 import NoteList from './noteList/NoteList';
+import './App.css';
 
 class App extends Component {
   state = {
