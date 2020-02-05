@@ -20,14 +20,6 @@
 	border-bottom: solid 2px grey;
 }
 
-.folder {
-	border: 2px solid grey;
-	width: 200px;
-	list-style: none;
-	text-align: center;
-	margin: 5px;
-}
-
 #addfolder {
 	margin-top: 20px;
 }

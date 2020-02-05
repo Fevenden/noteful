@@ -1,0 +1,11 @@
+.folder {
+	border: 2px solid grey;
+	width: 200px;
+	list-style: none;
+	text-align: center;
+	margin: 5px;
+}
+
+.active {
+    background-color: rgb(60, 200, 255);
+}

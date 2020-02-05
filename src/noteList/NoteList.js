@@ -11,10 +11,11 @@ export default function Notelist(props) {
   }
   return (
     <section className='noteList'>  
-      <button id='goBack'>Go Back</button>
+      <ul>
         <RenderNote 
           notes={notes}
         />
+      </ul>
       <button id='addNote'>Add Note</button>
     </section>
   )
