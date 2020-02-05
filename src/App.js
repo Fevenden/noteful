@@ -21,46 +21,44 @@ class App extends Component {
     return (
       <div className='app'>
         <Header />
+        <main>
           <Route 
             exact path='/'
             render={() => 
-              <main>  
+              <>  
                 <Sidebar 
                   state={this.state}
-                />
+                  />
                 <NoteList
                   state={this.state}
-                />
-              </main>
+                  />
+              </>
             }
-          />
+            />
           <Route
             path='/folder/:folderId'
-            render={({match}) => {
-              return (
-                <main>
-                  <Sidebar
-                    state={this.state}
-                    />
-                  <NoteList
-                    state={this.state}
-                    match={match}
+            render={({match}) =>
+              <>
+                <Sidebar
+                  state={this.state}
                   />
-                </main>
-              )
-            }}
+                <NoteList
+                  state={this.state}
+                  match={match}
+                  />
+              </>
+            }
           />
           <Route 
             path='/note/:noteId'
-            render={(match) =>
-              <main>
-                <NotePage 
-                  state={this.state}
-                  match={match}
-                />
-              </main>
-            }
+            render={({match}) =>
+            <NotePage 
+            state={this.state}
+            match={match}
+            />
+          }
           />
+        </main>
       </div>
     );
   }
