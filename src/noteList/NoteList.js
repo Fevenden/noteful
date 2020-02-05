@@ -1,30 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import RenderNote from '../renderNote/RenderNote';
 import './NoteList.css';
 
 export default function Notelist(props) {
-  let notes = null; 
-  if (props.match === undefined) {
-    notes = props.state.notes;
-    } else {
+  let notes = props.state.notes
+  if (props.match !== undefined) {
     notes = props.state.notes.filter(note => 
       note.folderId === props.match.params.folderId
     )
   }
-  let notesMaped = notes.map(note =>{
-    return (
-      <li className='note' key={note.id}>
-        <Link to='/note/:noteId'>
-          <h2>{note.name}</h2>
-        </Link>
-        <button id='deleteNote'>delete note</button>
-      </li>
-    )
-  });
   return (
     <section className='noteList'>  
       <ul>
-        {notesMaped}
+        <RenderNote 
+          notes={notes}
+        />
       </ul>
       <button id='addNote'>Add Note</button>
     </section>
