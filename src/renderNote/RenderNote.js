@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './RenderNote.css';
 
 export default function RenderNote(props) {
-	return props.notes.map(note =>{
+	return props.notes.map(note => {
     return (
       <li className='note' key={note.id}>
         <Link to={`/note/${note.id}`}>
