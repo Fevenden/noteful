@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './sidebar.css';
 
 export default function Sidebar(props) {
   const folders = props.state.folders.map(folder => {
-    console.log(folder)
     return (
       <li className='folder' key={folder.id}>
-        <h2>{folder.name}</h2>
+        <NavLink to={`/folder/${folder.id}`} >
+          <h2>{folder.name}</h2>
+        </NavLink>
       </li>
     )
   })

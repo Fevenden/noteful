@@ -20,14 +20,33 @@ class App extends Component {
     return (
       <div className='app'>
         <Header />
-        <main>
-          <Sidebar 
-            state={this.state}
+          <Route 
+            exact path='/'
+            render={(match) => 
+              <main>  
+                <Sidebar 
+                  state={this.state}
+                />
+                <NoteList
+                  state={this.state}
+                />
+              </main>
+            }
           />
-          <NoteList 
-            state={this.state}
+          <Route
+            path='/folder/:folderId'
+            render={({match}) => {
+              return <main>
+                <Sidebar
+                  state={this.state}
+                  />
+                <NoteList
+                  state={this.state}
+                  match={match}
+                  />
+              </main>
+            }}
           />
-        </main>
       </div>
     );
   }

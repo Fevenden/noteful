@@ -5,7 +5,9 @@ import './header.css';
 function Header(props) {
   return (
     <header>
-      <h1>Noteful</h1>
+      <Link to='/'>
+        <h1>Noteful</h1>
+      </Link>
     </header>
   )
 }
