@@ -1,6 +1,6 @@
 import React from 'react';
 import RenderFolder from '../renderFolder/RenderFolder';
-import './sidebar.css';
+import './Sidebar.css';
 
 export default function Sidebar(props) {
   return (
