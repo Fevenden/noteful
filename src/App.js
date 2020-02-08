@@ -50,45 +50,32 @@ class App extends Component {
           <main>
             <Route 
               exact path='/'
-              // component={{
-              //   sidebar: Sidebar,
-              //   main: NoteList,
-              // }}
               render={() => 
                 <>  
-                  <Sidebar 
-                    state={this.state}
-                    />
-                  <NoteList
-                    state={this.state}
-                    />
+                  <Sidebar />
+                  <NoteList />
                 </>
               }
               />
             <Route
               path='/folder/:folderId'
-              component={{
-                sidebar: Sidebar,
-                main: NoteList,
-              }}
-              // render={({match}) =>
-              //   <>
-              //     <Sidebar/>
-              //     <NoteList
-              //       match={match}
-              //     />
-              //   </>
-              // }
+              render={({match}) =>
+                <>
+                  <Sidebar/>
+                  <NoteList
+                    match={match}
+                  />
+                </>
+              }
             />
             <Route 
               path='/note/:noteId'
-              component={NotePage}
-              // render={({match}) =>
-              //   <NotePage 
-              //     state={this.state}
-              //     match={match}
-              //   />
-              // }
+              render={({match}) =>
+                <NotePage 
+                  state={this.state}
+                  match={match}
+                />
+              }
             />
           </main>
         </NotefulContext.Provider>  

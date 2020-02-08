@@ -7,6 +7,7 @@ class NoteList extends React.Component {
   static contextType = NotefulContext;
 
   render() {
+    console.log(this.props.match)
     let notes = this.context.notes
     if (this.props.match !== undefined) {
       notes = this.context.notes.filter(note => 
@@ -18,7 +19,7 @@ class NoteList extends React.Component {
         <ul>
           <RenderNote 
             notes={notes}
-            />
+          />
         </ul>
         <button id='addNote'>Add Note</button>
       </section>
