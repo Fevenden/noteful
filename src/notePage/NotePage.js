@@ -2,10 +2,16 @@ import React from 'react';
 import RenderNote from '../renderNote/RenderNote';
 import RenderFolder from '../renderFolder/RenderFolder'
 import NotefulContext from '../NotefulContext';
+import {withRouter} from 'react-router-dom';
 import './NotePage.css';
 
-export default class NotePage extends React.Component{
+class NotePage extends React.Component{
   static contextType = NotefulContext;
+
+  handleDeleteNote = (noteId) => {
+    console.log('deleted note from notePage')
+    this.props.history.push('/')
+  }
   
   render() {
     let notes = this.context.notes.filter(note => 
@@ -26,7 +32,9 @@ export default class NotePage extends React.Component{
           </nav>
           <div className='noteSection'>
             <RenderNote
-              notes={notes}
+              id={note.id}
+              name={note.name}
+              onDeleteNote={this.handleDeleteNote}
             />
             <p>{note.content}</p>
           </div>
@@ -35,3 +43,5 @@ export default class NotePage extends React.Component{
     });
   }
 }
+
+export default withRouter(NotePage)

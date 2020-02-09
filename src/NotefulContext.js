@@ -4,7 +4,6 @@ const NotefulContext = React.createContext({
 	folders: [],
 	notes: [],
 	addFolder: () => {},
-	deleteFolder: () => {},
 	addNote: () => {},
 	deleteNote: () => {},
 })

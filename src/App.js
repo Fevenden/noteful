@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Header from './header/header';
-import dummyStore from './dummy-store';
 import Sidebar from './sidebar/Sidebar';
 import NoteList from './noteList/NoteList';
 import NotePage from './notePage/NotePage';
@@ -15,24 +14,30 @@ class App extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState(dummyStore), 1000)
-  }
+    fetch('http://localhost:9090/folders')
+    .then(r => r.json())
+    .then(rJson => this.setState({folders: rJson}))
+    .catch(err => console.log(err));
+
+    fetch('http://localhost:9090/notes')
+    .then(r => r.json())
+    .then(rJson => this.setState({notes: rJson}))
+    .catch(err => console.log(err));
+  };
 
   addFolder = () => {
     console.log('used add folder')
-  }
-
-  deleteFolder = () => { 
-    console.log('used delete folder')
-  }
+  };
 
   addNote = () => {
     console.log('used add note')
-  }
+  };
 
-  deleteNote = () => {
-    console.log('used delete note')
-  }
+  deleteNote = (noteId) => {
+    this.setState({
+      notes: this.state.notes.filter(note => note.id !==noteId)
+    });
+  };
 
   render() {
     const contextValue = {
@@ -59,23 +64,16 @@ class App extends Component {
               />
             <Route
               path='/folder/:folderId'
-              render={({match}) =>
+              render={() =>
                 <>
                   <Sidebar/>
-                  <NoteList
-                    match={match}
-                  />
+                  <NoteList/>
                 </>
               }
             />
             <Route 
               path='/note/:noteId'
-              render={({match}) =>
-                <NotePage 
-                  state={this.state}
-                  match={match}
-                />
-              }
+              component={NotePage}
             />
           </main>
         </NotefulContext.Provider>  

@@ -10,3 +10,7 @@ ul {
     justify-content: center;
     flex-grow: 2;
 }
+
+li {
+    list-style-type: none;
+}
