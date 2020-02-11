@@ -1,6 +1,6 @@
 import React from 'react';
 import RenderFolder from '../renderFolder/RenderFolder';
-import './Sidebar.css';
+import './sidebar.css';
 import NotefulContext from  '../NotefulContext';
 
 class Sidebar extends React.Component{
