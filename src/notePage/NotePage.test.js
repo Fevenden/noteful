@@ -7,5 +7,5 @@ describe('NotePage component', () => {
     const div = document.createElement('div');
     ReactDOM.render(<NotePage />, div);
     ReactDOM.unmountComponentAtNode(div);
-  })
+  }) 
 })
