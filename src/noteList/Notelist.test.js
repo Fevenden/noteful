@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import NoteList from './NoteList';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('NoteList component', () => {
   it('renders without crashing', () => {
-    const dov = document.createElement('div');
-    ReactDOM.render(<NoteList />, div);
+    const div = document.createElement('div');
+    ReactDOM.render(
+    <BrowserRouter>
+      <NoteList />
+    </BrowserRouter>, 
+    div);
     ReactDOM.unmountComponentAtNode(div);
   });
 })

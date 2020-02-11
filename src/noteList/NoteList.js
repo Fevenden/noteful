@@ -8,7 +8,6 @@ class NoteList extends React.Component {
   static contextType = NotefulContext;
 
   render() {
-    console.log(this.props);
     let notes = this.context.notes
     if (this.props.match.params.folderId !== undefined) {
       notes = this.context.notes.filter(note => 

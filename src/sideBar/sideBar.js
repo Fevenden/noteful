@@ -1,6 +1,7 @@
 import React from 'react';
 import RenderFolder from '../renderFolder/RenderFolder';
 import './sidebar.css';
+import { Link } from 'react-router-dom'
 import NotefulContext from  '../NotefulContext';
 
 class Sidebar extends React.Component{
@@ -15,9 +16,11 @@ class Sidebar extends React.Component{
             folders={this.context.folders}
             />
         </ul>
-        <button id='addfolder' onClick={this.context.addFolder}>
-          Add Folder
-        </button> 
+        <Link to='/addfolder'>
+          <button id='addfolder' onClick={this.context.addFolder}>
+            Add Folder
+          </button> 
+        </Link>
       </nav>
     )
   } 

@@ -6,6 +6,7 @@ import NoteList from './noteList/NoteList';
 import NotePage from './notePage/NotePage';
 import NotefulContext from './NotefulContext';
 import './App.css';
+import AddFolder from './AddFolder/AddFolder';
 
 class App extends Component {
   state = {
@@ -76,6 +77,10 @@ class App extends Component {
               component={NotePage}
             />
           </main>
+          <Route
+            path='/addfolder'
+            component={AddFolder}
+          />
         </NotefulContext.Provider>  
       </div>
     );
