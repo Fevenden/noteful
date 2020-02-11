@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Header from './header/header';
-import Sidebar from './sidebar/Sidebar';
+import Sidebar from './sidebar/sidebar';
 import NoteList from './noteList/NoteList';
 import NotePage from './notePage/NotePage';
 import NotefulContext from './NotefulContext';
