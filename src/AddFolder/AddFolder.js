@@ -16,7 +16,7 @@ class AddFolder extends React.Component {
   }
 
   validateName() {
-    const name = this.state.name.trim
+    const name = this.state.name
     if (name.length === 0) {
       return 'A Name is required';
     } else if (name.length < 3)
@@ -60,7 +60,9 @@ class AddFolder extends React.Component {
           defaultValue='New Folder'
           onChange={e => this.updateName(e.target.value)}
         />
-        <ValidationError message={this.validateName()}/>
+        {this.state.touched && (
+          <ValidationError message={this.validateName()}/>
+        )}
         <button id='cancel' type='button' onClick={e => this.handleClickCancel(e)}>Cancel</button>
         <button id='createNewFolder' onClick={e => this.handleSubmit(e)}>Create</button>
       </form>
