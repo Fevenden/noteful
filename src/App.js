@@ -8,6 +8,7 @@ import NotefulContext from './NotefulContext';
 import AddNote from './AddNote/AddNote'
 import './App.css';
 import AddFolder from './AddFolder/AddFolder';
+import ErrorBoundry from './ErrorBoundry';
 
 class App extends Component {
   state = {
@@ -64,9 +65,13 @@ class App extends Component {
             <Route 
               exact path='/'
               render={() => 
-                <>  
-                  <Sidebar />
-                  <NoteList />
+                <>
+                  <ErrorBoundry>
+                    <Sidebar />
+                  </ErrorBoundry>
+                  <ErrorBoundry>
+                    <NoteList />
+                  </ErrorBoundry>
                 </>
               }
               />
@@ -74,23 +79,33 @@ class App extends Component {
               path='/folder/:folderId'
               render={() =>
                 <>
+                <ErrorBoundry>
                   <Sidebar/>
+                </ErrorBoundry>
+                <ErrorBoundry>
                   <NoteList/>
+                </ErrorBoundry>
                 </>
               }
             />
-            <Route 
-              path='/note/:noteId'
-              component={NotePage}
-            /> 
-            <Route
-              path='/addfolder'
-              component={AddFolder}
-            />
-            <Route 
-              path='/addnote'
-              component={AddNote}
-            />
+            <ErrorBoundry>
+              <Route 
+                path='/note/:noteId'
+                component={NotePage}
+              /> 
+            </ErrorBoundry>
+            <ErrorBoundry>
+              <Route
+                path='/addfolder'
+                component={AddFolder}
+              />
+            </ErrorBoundry>
+            <ErrorBoundry>
+              <Route 
+                path='/addnote'
+                component={AddNote}
+              />
+            </ErrorBoundry>
           </main>
          
           
