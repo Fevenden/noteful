@@ -1,6 +1,5 @@
 import React from 'react';
 import NotefulContext from '../NotefulContext';
-// import { withRouter } from 'react-router-dom';
 import ValidationError from '../ValidationError'
 
 class AddNote extends React.Component {
