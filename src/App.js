@@ -34,8 +34,11 @@ class App extends Component {
       })
   };
 
-  addNote = () => {
+  addNote = (note) => {
     console.log('used add note')
+    this.setState({
+      notes: [...this.state.notes, note]
+    })
   };
 
   deleteNote = (noteId) => {
