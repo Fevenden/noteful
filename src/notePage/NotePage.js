@@ -2,14 +2,12 @@ import React from 'react';
 import RenderNote from '../renderNote/RenderNote';
 import RenderFolder from '../renderFolder/RenderFolder'
 import NotefulContext from '../NotefulContext';
-import {withRouter} from 'react-router-dom';
 import './NotePage.css';
 
 class NotePage extends React.Component{
   static contextType = NotefulContext;
 
-  handleDeleteNote = (noteId) => {
-    console.log('deleted note from notePage')
+  handleButtonClick = () => {
     this.props.history.push('/')
   }
   
@@ -24,7 +22,7 @@ class NotePage extends React.Component{
       return (
         <section className='notePage'>
           <nav className='sidebar'>
-            <button id='goBack'>Go Back</button>
+            <button id='goBack' onClick={this.handleButtonClick}>Go Back</button>
             <RenderFolder 
               className='folder-notePage'
               folders={folders}
@@ -34,7 +32,7 @@ class NotePage extends React.Component{
             <RenderNote
               id={note.id}
               name={note.name}
-              onDeleteNote={this.handleDeleteNote}
+              onDeleteNote={this.handleButtonClick}
             />
             <p>{note.content}</p>
           </div>
@@ -44,4 +42,4 @@ class NotePage extends React.Component{
   }
 }
 
-export default withRouter(NotePage)
+export default NotePage

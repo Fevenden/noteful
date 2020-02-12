@@ -1,5 +1,4 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom';
 import NotefulContext from '../NotefulContext';
 import ValidationError from '../ValidationError';
 
@@ -39,12 +38,12 @@ class AddFolder extends React.Component {
     .then(r => r.json())
     .then(data => {
       this.context.addFolder(data);
-      this.props.history.push('/')  ;
+      this.props.history.push('/');
     })
   }
   
   handleClickCancel = (e) => {
-    this.props.history.push('/')
+    this.props.history.push('/');
   }
 
   render() {
@@ -64,10 +63,10 @@ class AddFolder extends React.Component {
           <ValidationError message={this.validateName()}/>
         )}
         <button id='cancel' type='button' onClick={e => this.handleClickCancel(e)}>Cancel</button>
-        <button id='createNewFolder' onClick={e => this.handleSubmit(e)}>Create</button>
+        <button id='createNewFolder' onClick={e => this.handleSubmit(e)} disabled={this.validateName()}>Create</button>
       </form>
     )
   }
 }
 
-export default withRouter(AddFolder)
+export default AddFolder

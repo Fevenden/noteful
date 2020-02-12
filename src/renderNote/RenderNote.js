@@ -22,7 +22,7 @@ export default class RenderNote extends React.Component {
     })
     .then(res => {
       if (!res.ok) {
-        return res.json().then(e => this.propsise.reject(e))
+        return res.json().then(e => this.promise.reject(e))
       } else {
         return res.json()
       }
