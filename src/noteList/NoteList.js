@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import RenderNote from '../renderNote/RenderNote';
 import NotefulContext from '../NotefulContext';
 import { withRouter } from 'react-router-dom';
@@ -26,7 +27,9 @@ class NoteList extends React.Component {
             </li>
           )}
         </ul>  
-        <button id='addNote' onClick={this.context.addNote}>Add Note</button>
+        <Link to={'/addnote'}>
+          <button id='addNote'>Add Note</button>
+        </Link>
       </section>
     )
   }

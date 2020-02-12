@@ -17,7 +17,7 @@ class Sidebar extends React.Component{
             />
         </ul>
         <Link to='/addfolder'>
-          <button id='addfolder' onClick={this.context.addFolder}>
+          <button id='addfolder'>
             Add Folder
           </button> 
         </Link>

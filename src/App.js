@@ -5,6 +5,7 @@ import Sidebar from './sidebar/sidebar';
 import NoteList from './noteList/NoteList';
 import NotePage from './notePage/NotePage';
 import NotefulContext from './NotefulContext';
+import AddNote from './AddNote/AddNote'
 import './App.css';
 import AddFolder from './AddFolder/AddFolder';
 
@@ -26,8 +27,11 @@ class App extends Component {
     .catch(err => console.log(err));
   };
 
-  addFolder = () => {
+  addFolder = (folder) => {
     console.log('used add folder')
+      this.setState({
+        folders: [ ...this.state.folders, folder ]
+      })
   };
 
   addNote = () => {
@@ -75,12 +79,18 @@ class App extends Component {
             <Route 
               path='/note/:noteId'
               component={NotePage}
+            /> 
+            <Route
+              path='/addfolder'
+              component={AddFolder}
+            />
+            <Route 
+              path='/addnote'
+              component={AddNote}
             />
           </main>
-          <Route
-            path='/addfolder'
-            component={AddFolder}
-          />
+         
+          
         </NotefulContext.Provider>  
       </div>
     );
