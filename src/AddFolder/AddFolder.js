@@ -6,7 +6,7 @@ class AddFolder extends React.Component {
   static contextType = NotefulContext;
 
   state = {
-    name: ''
+    name: 'New Folder'
   }
 
   updateName(name) {
@@ -19,7 +19,6 @@ class AddFolder extends React.Component {
       name: this.state.name,
     }
 
-    console.log(folder);
     e.preventDefault();
     fetch('http://localhost:9090/folders', {
       method: 'POST',
@@ -29,7 +28,14 @@ class AddFolder extends React.Component {
       }
     })
     .then(r => r.json())
-    .then(data => console.log(data))
+    .then(data => {
+      this.context.addFolder(data);
+      this.props.history.push('/')  ;
+    })
+  }
+  
+  handleClickCancel = (e) => {
+    this.props.history.push('/')
   }
 
   render() {
@@ -42,10 +48,10 @@ class AddFolder extends React.Component {
           className='nameInput'
           id='name'
           name='nameFolder'
-          defaultValue='New Form'
+          defaultValue='New Folder'
           onChange={e => this.updateName(e.target.value)}
         />
-        <button id='cancel' type='button'>Cancel</button>
+        <button id='cancel' type='button' onClick={e => this.handleClickCancel(e)}>Cancel</button>
         <button id='submitNewFolder' onClick={e => this.handleSubmit(e)}>Create</button>
       </form>
     )
