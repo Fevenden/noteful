@@ -1,16 +1,26 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom';
 import NotefulContext from '../NotefulContext';
+import ValidationError from '../ValidationError';
 
 class AddFolder extends React.Component {
   static contextType = NotefulContext;
 
   state = {
-    name: 'New Folder'
+    name: 'New Folder',
+    toched: false,
   }
 
   updateName(name) {
-    this.setState({name: name});
+    this.setState({name: name, touched: true});
+  }
+
+  validateName() {
+    const name = this.state.name.trim
+    if (name.length === 0) {
+      return 'A Name is required';
+    } else if (name.length < 3)
+      return 'Name must be at least 3 characters long.'
   }
 
   handleSubmit = (e) => {
@@ -50,6 +60,7 @@ class AddFolder extends React.Component {
           defaultValue='New Folder'
           onChange={e => this.updateName(e.target.value)}
         />
+        <ValidationError message={this.validateName()}/>
         <button id='cancel' type='button' onClick={e => this.handleClickCancel(e)}>Cancel</button>
         <button id='createNewFolder' onClick={e => this.handleSubmit(e)}>Create</button>
       </form>
