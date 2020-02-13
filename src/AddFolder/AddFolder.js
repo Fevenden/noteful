@@ -2,6 +2,7 @@ import React from 'react'
 import NotefulContext from '../NotefulContext';
 import ValidationError from '../ValidationError';
 import { withRouter } from 'react-router-dom';
+import './AddFolder.css'
  
 class AddFolder extends React.Component {
   static contextType = NotefulContext;
@@ -59,20 +60,24 @@ class AddFolder extends React.Component {
     return (
       <form className="addFolderForm">
         <h2>Add Folder</h2>
-        <label htmlFor='folderName'>Name: </label>
-        <input 
-          type='text'
-          className='folderNameInput'
-          id='folderName'
-          name='nameFolder'
-          defaultValue='New Folder'
-          onChange={e => this.updateName(e.target.value)}
-        />
-        {this.state.touched && (
-          <ValidationError message={this.validateName()}/>
-        )}
-        <button id='cancel' type='button' onClick={e => this.handleClickCancel(e)}>Cancel</button>
-        <button id='createNewFolder' onClick={e => this.handleSubmit(e)} disabled={this.validateName()}>Create</button>
+        <div className='folderFormInput'>
+          <label htmlFor='folderName'>Name: </label>
+          <input 
+            type='text'
+            className='folderNameInput'
+            id='folderName'
+            name='nameFolder'
+            defaultValue='New Folder'
+            onChange={e => this.updateName(e.target.value)}
+            />
+          </div>
+          {this.state.touched && (
+            <ValidationError message={this.validateName()}/>
+          )}
+        <div className='folderFormButtons'>
+          <button id='cancel' type='button' onClick={e => this.handleClickCancel(e)}>Cancel</button>
+          <button id='createNewFolder' onClick={e => this.handleSubmit(e)} disabled={this.validateName()}>Create</button>
+        </div>
         {this.state.error && (
           <p>{this.state.error}</p>
         )}

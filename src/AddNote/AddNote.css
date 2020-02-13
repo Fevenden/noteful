@@ -1,0 +1,12 @@
+.addNoteForm {
+    display: flex;
+    flex-direction: column;;
+}
+
+.addNoteForm h2 {
+    align-self: center;
+}
+
+.noteFormButtons {
+    align-self: center;
+}
