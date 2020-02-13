@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './RenderFolder.css';
 
 export default function RenderFolder(props) {
@@ -13,3 +14,11 @@ export default function RenderFolder(props) {
     )
   })
 }
+
+RenderFolder.propTypes = {
+  folders: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  })),
+  className: PropTypes.string.isRequired
+};
