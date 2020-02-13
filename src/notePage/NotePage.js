@@ -2,6 +2,7 @@ import React from 'react';
 import RenderNote from '../renderNote/RenderNote';
 import RenderFolder from '../renderFolder/RenderFolder'
 import NotefulContext from '../NotefulContext';
+import { withRouter } from 'react-router-dom';
 import './NotePage.css';
 
 class NotePage extends React.Component{
@@ -42,4 +43,4 @@ class NotePage extends React.Component{
   }
 }
 
-export default NotePage
+export default withRouter(NotePage)

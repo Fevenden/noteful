@@ -1,6 +1,7 @@
 import React from 'react';
 import NotefulContext from '../NotefulContext';
-import ValidationError from '../ValidationError'
+import ValidationError from '../ValidationError';
+import { withRouter } from 'react-router-dom';
 
 class AddNote extends React.Component {
   static contextType = NotefulContext;
@@ -18,6 +19,7 @@ class AddNote extends React.Component {
       value: '',
       touched: false,
     },
+    error: null
   }
 
   updateName(name) {
@@ -83,15 +85,21 @@ class AddNote extends React.Component {
         'content-type' : 'application/json'
       }
     })
-    .then(r => r.json())
+    .then(r => {
+      if(!r.ok) {
+        throw new Error('Could not create new note, try again later.')
+      }
+      return r.json()
+    })
     .then(data => {
-      console.log(data)
+      this.setState({error: null});
       this.context.addNote(data)
       this.props.history.push(`/note/${data.id}`)
     })
+    .catch(err => this.setState({error: err.message}))
   }
 
-  render(){
+  render() {
     return (
       <form className='addNoteForm'>
         <h2>Add Note</h2>
@@ -135,9 +143,12 @@ class AddNote extends React.Component {
         >
           Create Note
         </button>
+        {this.state.error && (
+          <p>{this.state.error}</p>
+        )}
       </form>
     )
   }
 }
 
-export default AddNote
+export default withRouter(AddNote)

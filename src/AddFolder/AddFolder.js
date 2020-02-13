@@ -1,13 +1,15 @@
 import React from 'react'
 import NotefulContext from '../NotefulContext';
 import ValidationError from '../ValidationError';
-
+import { withRouter } from 'react-router-dom';
+ 
 class AddFolder extends React.Component {
   static contextType = NotefulContext;
 
   state = {
     name: 'New Folder',
     toched: false,
+    error: null
   }
 
   updateName(name) {
@@ -35,11 +37,18 @@ class AddFolder extends React.Component {
         'content-type': 'application/json'
       }
     })
-    .then(r => r.json())
+    .then(r => {
+      if (!r.ok) {
+        throw new Error('Could not create new folder, try again later.')
+      }
+      return r.json()
+    })
     .then(data => {
+      this.setState({error: null});
       this.context.addFolder(data);
       this.props.history.push('/');
     })
+    .catch(err => this.setState({error: err.message}))
   }
   
   handleClickCancel = (e) => {
@@ -64,9 +73,12 @@ class AddFolder extends React.Component {
         )}
         <button id='cancel' type='button' onClick={e => this.handleClickCancel(e)}>Cancel</button>
         <button id='createNewFolder' onClick={e => this.handleSubmit(e)} disabled={this.validateName()}>Create</button>
+        {this.state.error && (
+          <p>{this.state.error}</p>
+        )}
       </form>
     )
   }
 }
 
-export default AddFolder
+export default withRouter(AddFolder)

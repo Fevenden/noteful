@@ -14,29 +14,48 @@ class App extends Component {
   state = {
     folders: [],
     notes: [],
+    folderErr: null,
+    noteErr: null
   }
 
   componentDidMount() {
     fetch('http://localhost:9090/folders')
-    .then(r => r.json())
+    .then(r => {
+      if (!r.ok) {
+        throw new Error('could not fetch folders')
+      }
+      return r.json()
+    })
     .then(rJson => this.setState({folders: rJson}))
-    .catch(err => console.log(err));
+    .catch(err => {
+
+      this.setState({
+        folderErr: err.message
+      })
+    });
 
     fetch('http://localhost:9090/notes')
-    .then(r => r.json())
+    .then(r => {
+      if (!r.ok) {
+        throw new Error('Could not fetch notes')
+      }  
+      return r.json()
+    })
     .then(rJson => this.setState({notes: rJson}))
-    .catch(err => console.log(err));
+    .catch(err => {
+      this.setState({
+        noteErr: err.message
+      })
+    });
   };
 
   addFolder = (folder) => {
-    console.log('used add folder')
       this.setState({
         folders: [ ...this.state.folders, folder ]
       })
   };
 
   addNote = (note) => {
-    console.log('used add note')
     this.setState({
       notes: [...this.state.notes, note]
     })
@@ -67,10 +86,10 @@ class App extends Component {
               render={() => 
                 <>
                   <ErrorBoundry>
-                    <Sidebar />
+                    <Sidebar folderErr={this.state.folderErr}/>
                   </ErrorBoundry>
                   <ErrorBoundry>
-                    <NoteList />
+                    <NoteList noteErr={this.state.noteErr}/>
                   </ErrorBoundry>
                 </>
               }
@@ -80,32 +99,40 @@ class App extends Component {
               render={() =>
                 <>
                 <ErrorBoundry>
-                  <Sidebar/>
+                  <Sidebar folderErr={this.state.folderErr}/>
                 </ErrorBoundry>
                 <ErrorBoundry>
-                  <NoteList/>
+                  <NoteList noteErr={this.state.noteErr}/>
                 </ErrorBoundry>
                 </>
               }
             />
-            <ErrorBoundry>
               <Route 
                 path='/note/:noteId'
-                component={NotePage}
-              /> 
-            </ErrorBoundry>
-            <ErrorBoundry>
+                render={() =>
+                  <ErrorBoundry>
+                    <NotePage />
+                  </ErrorBoundry>
+                }
+              />
               <Route
                 path='/addfolder'
-                component={AddFolder}
+                // component={AddFolder}
+                render={() =>
+                  <ErrorBoundry>
+                    <AddFolder />
+                  </ErrorBoundry>
+                }
               />
-            </ErrorBoundry>
-            <ErrorBoundry>
               <Route 
                 path='/addnote'
-                component={AddNote}
+                // component={AddNote}
+                render={() => 
+                <ErrorBoundry>
+                  <AddNote />
+                </ErrorBoundry>
+                }
               />
-            </ErrorBoundry>
           </main>
          
           

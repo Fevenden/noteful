@@ -6,7 +6,11 @@ import AddFolder from './AddFolder';
 describe('AddFolder component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div')
-    ReactDOM.render(<AddFolder />, div);
+    ReactDOM.render(
+    <BrowserRouter>
+      <AddFolder />
+    </BrowserRouter>,
+      div);
     ReactDOM.unmountComponentAtNode(div);
   });
 })
