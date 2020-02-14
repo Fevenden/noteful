@@ -66,7 +66,7 @@ class AddNote extends React.Component {
   validateFolder() {
     const folder = this.state.folderId.value;
     const touched = this.state.folderId.touched;
-    if (folder === 'Choose a folder' || touched === false) {
+    if (folder === 'Choose a folder') {
       return 'Folder is required'
     } 
   }
