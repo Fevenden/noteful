@@ -76,7 +76,8 @@ class AddNote extends React.Component {
     const note = {
       name: this.state.name.value,
       content: this.state.content.value,
-      folderId: this.state.folderId.value
+      folderId: this.state.folderId.value,
+      modified: new Date(),
     }
 
     fetch('http://localhost:9090/notes', {

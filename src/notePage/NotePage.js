@@ -33,6 +33,7 @@ class NotePage extends React.Component{
             <RenderNote
               id={note.id}
               name={note.name}
+              modified={note.modified}
               onDeleteNote={this.handleButtonClick}
             />
             <p>{note.content}</p>

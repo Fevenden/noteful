@@ -27,6 +27,7 @@ class NoteList extends React.Component {
               <RenderNote 
                 id={note.id}
                 name={note.name}
+                modified={note.modified}
               />
             </li>
           )}
