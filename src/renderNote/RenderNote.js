@@ -32,7 +32,6 @@ export default class RenderNote extends React.Component {
     .then(() => {
       this.context.deleteNote(noteId);
       this.props.onDeleteNote(noteId);
-      // console.log(this.context.notes)
     })
     .catch(err => {
       console.log(err);
