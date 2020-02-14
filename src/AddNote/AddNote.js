@@ -9,7 +9,7 @@ class AddNote extends React.Component {
 
   state = {
     name: {
-      value:'New Note',
+      value:'',
       touched: false,
     },
     content: { 
@@ -111,7 +111,7 @@ class AddNote extends React.Component {
             type='text'
             className='noteNameInput'
             id='noteName'
-            defaultValue='New Note'
+            placeholder='New Note'
             onChange={e => this.updateName(e.target.value)}
             required
           />

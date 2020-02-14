@@ -8,7 +8,7 @@ class AddFolder extends React.Component {
   static contextType = NotefulContext;
 
   state = {
-    name: 'New Folder',
+    name: '',
     toched: false,
     error: null
   }
@@ -67,7 +67,7 @@ class AddFolder extends React.Component {
             className='folderNameInput'
             id='folderName'
             name='nameFolder'
-            defaultValue='New Folder'
+            placeholder='New Folder'
             onChange={e => this.updateName(e.target.value)}
             />
           </div>
