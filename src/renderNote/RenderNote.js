@@ -40,7 +40,6 @@ export default class RenderNote extends React.Component {
   };
 
   render(){
-    console.log(new Date(this.props.modified))
     return (
       <div className='note'>
         <Link to={`/note/${this.props.id}`}>
