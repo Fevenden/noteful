@@ -117,10 +117,10 @@ class AddNote extends React.Component {
           />
         </div>
         {this.state.name.touched && (
-          <ValidationError message={this.validateName()}/>
-        )}
+          <div id='nameDescription'><ValidationError message={this.validateName()}/></div>
+          )}
         <div>
-        <label>Folder: </label>
+        <label htmlFor='selectFolder'>Folder: </label>
           <select id='selectFolder' onChange={e => this.updateFolderId(e.target.value)} required>
             <option value={null}>Choose a folder</option>
             {this.context.folders.map(folder => 
