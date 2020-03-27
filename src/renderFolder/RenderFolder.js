@@ -6,11 +6,11 @@ import './RenderFolder.css';
 export default function RenderFolder(props) {
   return props.folders.map(folder => {
     return (
-      <NavLink to={`/folder/${folder.id}`} >
-        <li className={props.className} key={folder.id}>
+      <li className={props.className} key={folder.id}>
+        <NavLink to={`/folder/${folder.id}`} >
           <h2>{folder.folder_name}</h2>
-        </li>
-      </NavLink>
+        </NavLink>
+      </li>
     )
   })
 }
