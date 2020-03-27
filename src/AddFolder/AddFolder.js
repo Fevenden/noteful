@@ -8,17 +8,17 @@ class AddFolder extends React.Component {
   static contextType = NotefulContext;
 
   state = {
-    name: '',
+    folder_name: '',
     toched: false,
     error: null
   }
 
   updateName(name) {
-    this.setState({name: name, touched: true});
+    this.setState({folder_name: name, touched: true});
   }
 
   validateName() {
-    const name = this.state.name
+    const name = this.state.folder_name
     if (name.length === 0) {
       return 'A Name is required';
     } else if (name.length < 3)
@@ -28,10 +28,10 @@ class AddFolder extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const folder = {
-      name: this.state.name,
+      folder_name: this.state.folder_name,
     }
 
-    fetch('http://localhost:9090/folders', {
+    fetch('http://localhost:8000/api/folders', {
       method: 'POST',
       body: JSON.stringify(folder),
       headers: {

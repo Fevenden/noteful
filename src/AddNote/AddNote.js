@@ -74,13 +74,13 @@ class AddNote extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const note = {
-      name: this.state.name.value,
+      title: this.state.name.value,
       content: this.state.content.value,
-      folderId: this.state.folderId.value,
+      folder_id: this.state.folderId.value,
       modified: new Date(),
     }
 
-    fetch('http://localhost:9090/notes', {
+    fetch('http://localhost:8000/api/notes', {
       method: 'POST',
       body: JSON.stringify(note),
       headers: {
@@ -125,7 +125,7 @@ class AddNote extends React.Component {
             <option value={null}>Choose a folder</option>
             {this.context.folders.map(folder => 
               <option key={folder.id} value={folder.id}>
-              {folder.name}
+              {folder.folder_name}
               </option>  
             )}
           </select>
