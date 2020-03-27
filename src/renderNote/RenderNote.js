@@ -16,18 +16,11 @@ export default class RenderNote extends React.Component {
     e.preventDefault();
     const noteId = this.props.id;
     
-    fetch(`http://localhost:9090/notes/${noteId}`, {
+    fetch(`http://localhost:8000/api/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
       },
-    })
-    .then(res => {
-      if (!res.ok) {
-        return res.json().then(e => this.promise.reject(e))
-      } else {
-        return res.json()
-      }
     })
     .then(() => {
       this.context.deleteNote(noteId);
