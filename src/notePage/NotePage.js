@@ -14,11 +14,11 @@ class NotePage extends React.Component{
   
   render() {
     let notes = this.context.notes.filter(note => 
-      note.id === this.props.match.params.noteId  
+      note.id === parseInt(this.props.match.params.noteId)  
     );
     return notes.map(note => {
       let folders = this.context.folders.filter(folder => 
-        folder.id === note.folderId  
+        folder.id === note.folder_id  
       );
       return (
         <section className='notePage'>
@@ -32,7 +32,7 @@ class NotePage extends React.Component{
           <div className='noteSection'>
             <RenderNote
               id={note.id}
-              name={note.name}
+              name={note.title}
               modified={note.modified}
               onDeleteNote={this.handleButtonClick}
             />

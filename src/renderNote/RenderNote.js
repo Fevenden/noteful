@@ -53,7 +53,7 @@ export default class RenderNote extends React.Component {
 
 RenderNote.propTypes = {
   name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   onDeleteNote: PropTypes.func, 
   modified: PropTypes.string,
 }

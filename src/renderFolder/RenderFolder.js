@@ -8,7 +8,7 @@ export default function RenderFolder(props) {
     return (
       <NavLink to={`/folder/${folder.id}`} >
         <li className={props.className} key={folder.id}>
-          <h2>{folder.name}</h2>
+          <h2>{folder.folder_name}</h2>
         </li>
       </NavLink>
     )
@@ -17,8 +17,8 @@ export default function RenderFolder(props) {
 
 RenderFolder.propTypes = {
   folders: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    folder_name: PropTypes.string.isRequired,
   })),
   className: PropTypes.string.isRequired
 };

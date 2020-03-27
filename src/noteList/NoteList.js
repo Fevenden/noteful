@@ -13,7 +13,7 @@ class NoteList extends React.Component {
     let notes = this.context.notes
     if (this.props.match.params.folderId !== undefined) {
       notes = this.context.notes.filter(note => 
-        note.folderId === this.props.match.params.folderId
+        note.folder_id === parseInt(this.props.match.params.folderId)
       )
     }
     return (
@@ -26,7 +26,7 @@ class NoteList extends React.Component {
             <li key={note.id}>
               <RenderNote 
                 id={note.id}
-                name={note.name}
+                name={note.title}
                 modified={note.modified}
               />
             </li>

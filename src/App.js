@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:9090/folders')
+    fetch('http://localhost:8000/api/folders')
     .then(r => {
       if (!r.ok) {
         throw new Error('could not fetch folders')
@@ -34,7 +34,7 @@ class App extends Component {
       })
     });
 
-    fetch('http://localhost:9090/notes')
+    fetch('http://localhost:8000/api/notes')
     .then(r => {
       if (!r.ok) {
         throw new Error('Could not fetch notes')
