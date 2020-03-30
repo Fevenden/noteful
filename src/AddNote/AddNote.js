@@ -2,6 +2,7 @@ import React from 'react';
 import NotefulContext from '../NotefulContext';
 import ValidationError from '../ValidationError';
 import { withRouter } from 'react-router-dom';
+import { API_ENDPOINT } from '../config'
 import './AddNote.css'
 
 class AddNote extends React.Component {
@@ -80,7 +81,7 @@ class AddNote extends React.Component {
       modified: new Date(),
     }
 
-    fetch('http://localhost:8000/api/notes', {
+    fetch(API_ENDPOINT + '/api/notes', {
       method: 'POST',
       body: JSON.stringify(note),
       headers: {

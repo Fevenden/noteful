@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import './RenderNote.css';
 import NotefulContext from '../NotefulContext';
+import { API_ENDPOINT} from '../config'
 import PropTypes from 'prop-types';
 
 export default class RenderNote extends React.Component {
@@ -16,7 +17,7 @@ export default class RenderNote extends React.Component {
     e.preventDefault();
     const noteId = this.props.id;
     
-    fetch(`http://localhost:8000/api/notes/${noteId}`, {
+    fetch(API_ENDPOINT + `/api/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
@@ -45,7 +46,7 @@ export default class RenderNote extends React.Component {
 }
 
 RenderNote.propTypes = {
-  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   onDeleteNote: PropTypes.func, 
   modified: PropTypes.string,

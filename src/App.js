@@ -9,6 +9,7 @@ import AddNote from './AddNote/AddNote'
 import './App.css';
 import AddFolder from './AddFolder/AddFolder';
 import ErrorBoundry from './ErrorBoundry';
+import { API_ENDPOINT } from './config'
 
 class App extends Component {
   state = {
@@ -19,7 +20,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8000/api/folders')
+    fetch(API_ENDPOINT + '/api/folders')
     .then(r => {
       if (!r.ok) {
         throw new Error('could not fetch folders')
@@ -34,7 +35,7 @@ class App extends Component {
       })
     });
 
-    fetch('http://localhost:8000/api/notes')
+    fetch(API_ENDPOINT + '/api/notes')
     .then(r => {
       if (!r.ok) {
         throw new Error('Could not fetch notes')

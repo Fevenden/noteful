@@ -2,6 +2,7 @@ import React from 'react'
 import NotefulContext from '../NotefulContext';
 import ValidationError from '../ValidationError';
 import { withRouter } from 'react-router-dom';
+import { API_ENDPOINT } from '../config'
 import './AddFolder.css'
  
 class AddFolder extends React.Component {
@@ -31,7 +32,7 @@ class AddFolder extends React.Component {
       folder_name: this.state.folder_name,
     }
 
-    fetch('http://localhost:8000/api/folders', {
+    fetch(API_ENDPOINT + '/api/folders', {
       method: 'POST',
       body: JSON.stringify(folder),
       headers: {
