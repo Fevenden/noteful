@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 export default class RenderNote extends React.Component {
   static defaultProps ={
     onDeleteNote: () => {},
+    modified: Date.now()
   };
 
   static contextType = NotefulContext;
@@ -33,6 +34,7 @@ export default class RenderNote extends React.Component {
   };
 
   render(){
+    console.log(this.props.modified)
     return (
       <div className='note'>
         <Link to={`/note/${this.props.id}`}>

@@ -15,6 +15,10 @@ export default function RenderFolder(props) {
   })
 }
 
+RenderFolder.defaultProps = {
+  folders: []
+}
+
 RenderFolder.propTypes = {
   folders: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
